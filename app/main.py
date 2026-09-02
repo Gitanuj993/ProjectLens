@@ -1,7 +1,7 @@
 # main logic
 from flask import Flask, jsonify, request
 from urllib.parse import urlparse
-
+from app.fetcher import fetch_url
 
 app = Flask(__name__)
 
