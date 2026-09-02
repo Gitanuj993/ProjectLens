@@ -1,0 +1,19 @@
+name: ProjectLens API Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Test analyze endpoint
+        run: |
+          curl -X POST "https://projectlens-1.onrender.com/analyze" \
+            -H "Content-Type: application/json" \
+            -d '{"url":"https://github.com/Gitanuj993/ProjectLens"}'
+
+
+
+            
