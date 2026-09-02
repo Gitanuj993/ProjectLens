@@ -46,11 +46,20 @@ def analyze():
             "error": "Invalid URL"
         }), 400
 
-    return jsonify({
-        "status": "accepted",
-        "url": url,
-        "message": "URL received successfully"
-    })
+    try:
+        result = fetch_url(url)
+
+        return jsonify({
+            "status": "success",
+            "url": url,
+            "fetch": result
+        })
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
