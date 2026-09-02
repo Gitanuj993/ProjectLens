@@ -1,7 +1,9 @@
 # main logic
 from flask import Flask, jsonify, request
 from urllib.parse import urlparse
+
 from app.fetcher import fetch_url
+from app.detector import detect_source
 
 app = Flask(__name__)
 
@@ -48,10 +50,12 @@ def analyze():
 
     try:
         result = fetch_url(url)
+        source_type = detect_source(url)
 
         return jsonify({
             "status": "success",
             "url": url,
+            "source_type": source_type,
             "fetch": result
         })
 
