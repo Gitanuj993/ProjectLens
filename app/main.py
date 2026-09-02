@@ -16,7 +16,13 @@ def validate_url(url):
     except Exception:
         return False
     
-
+@app.get("/")
+def health():
+    return jsonify({
+        "status": "ok",
+        "service": "project-evaluator"
+    })
+    
 @app.get("/health")
 def health():
     return jsonify({
