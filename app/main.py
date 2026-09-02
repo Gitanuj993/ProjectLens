@@ -17,7 +17,7 @@ def validate_url(url):
         return False
     
 @app.get("/")
-def health():
+def home():
     return jsonify({
         "status": "ok",
         "service": "project-evaluator"
